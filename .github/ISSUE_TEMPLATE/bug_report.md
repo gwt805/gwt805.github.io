@@ -1,68 +1,35 @@
 ---
-name: Bug Report
+name: Bug report
 about: Create a report to help us improve
+title: 'Bug:'
+labels: ''
+assignees: ''
+
 ---
 
-**NOTE:** Before you start, the following should be completed.
+<!-- Prefer English -->
 
-- Read [tutorial][tutorial] to understand the usage and the correct effect of functional design.
-- Make sure no [similar issue(including closed ones)][issues] exists.
-- Make sure the bug is found in the latest code of the `master` branch.
+**Description**
 
-[tutorial]: https://cotes2020.github.io/chirpy-demo/categories/tutorial/
-[issues]: https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue
+[Description of the bug]
 
-## Describe the bug
+**Steps to Reproduce**
 
-<!-- A clear and concise description of what the bug is. -->
+1. [First Step]
+2. [Second Step]
+3. [and so on...]
 
-## To Reproduce
+**Expected behavior**
 
-Steps to reproduce the behavior:
-<!--
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
--->
+[What you expected to happen]
 
-## Expected behavior
+**Screenshots (If Necessary)**
 
-<!-- A clear and concise description of what you expected to happen. -->
+[Screenshots to help explain your problem.]
 
-## Logs/Screenshots
+**Environment (If Necessary)**
 
-<!-- If applicable, add logs/screenshots to help explain your problem. -->
-
-## Environment
-
-| Command                           | Version |
-|-----------------------------------|---------|
-| `ruby -v`                         |         |
-| `gem -v`                          |         |
-| `bundle -v`                       |         |
-| `bundle exec jekyll -v`           |         |
-| `bundle info jekyll-theme-chirpy` |         |
-
-<!-- If necessary, uncomment and fill in the following list:
-
-### Desktop
-
-- OS: [e.g. macOS 10.15.6]
-- Browser: [e.g. Chrome 85.0.4183.83 (64-bit)]
-
--->
-
-<!-- If necessary, uncomment and fill in the following list:
-
-### Smartphone
-
-- Device: [e.g. iPhone 6]
-- OS: [e.g. iOS 13.6.1]
-- Browser: [e.g. Chrome 22]
-
--->
-
-## Additional context
-
-<!-- Add any other context about the problem here. -->
+- OS: [e.g. Github Pages, Windows 10, macOS 10.13, Linux(CentOS 7.5), iOS 11, Android 8(Pixel 2)]
+- Ruby: [e.g. Github Pages, 2.4.0p0]
+- Jekyll: [e.g. Github Pages, 3.7.3]
+- Browser: [e.g. Chrome, Safari, Edge, Firefox]
