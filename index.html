@@ -43,7 +43,10 @@
 <script src="./static/layui/v2.7.6/layui.js"></script>
 <script src="./static/xing.js"></script>
 <script>
-    $("#loginF").modal("show")
+    $(document).ready(()=>{
+        $("#loginF").modal("show")
+    })
+    
     function login() {
         const user = $("#user").val();
         const pwd = $("#pwd").val();
@@ -65,6 +68,13 @@
         }
         })
     }
+
+    $("input").keydown(function (event) {
+      if (event.keyCode == 13) {
+        login();
+      }
+    });
+
     const flow = layui.flow;
     flow.lazyimg({elem: '#imgs img'});
 </script>
