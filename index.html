@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./static/icon/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./static/layui/v2.7.6/css/layui.css">
+    <!-- <link rel="stylesheet" href="./static/layui/v2.7.6/css/layui.css"> -->
     <link rel="stylesheet" href="./static/bootstrap/v3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./static/index.css">
     <title>WT-IMGS</title>
@@ -14,11 +14,10 @@
 
 <body>
     <canvas id="canvas"></canvas>
-    <div class="site-demo-flow" id="imgs"
-        style="width: max-content; height: max-content; display: grid; grid-template-columns: repeat(6, 1fr);">
-        <img lay-src="./imgs/main_page.png" alt="main_page">
-        <img lay-src="./imgs/tmbk.jpg" alt="tmbk">
-        <img lay-src="./imgs/tx_dog.jpg" alt="tx_dog">
+    <div class="site-demo-flow" id="imgs-div">
+        <div><a href="./imgs/main_page.png" target="_blank"><img src="./imgs/main_page.png" alt="main_page"></a></div>
+        <div><a href="./imgs/tmbk.jpg" target="_blank"><img src="./imgs/tmbk.jpg" alt="tmbk"></a></div>
+        <div><a href="./imgs/tx_dog.jpg" target="_blank"><img src="./imgs/tx_dog.jpg" alt="tx_dog"></a></div>
     </div>
     <div class="modal fade" tabindex="-1" role="dialog" id="loginF" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-sm" role="document">
@@ -41,11 +40,14 @@
 </body>
 <script src="./static/jquery.min.js"></script>
 <script src="./static/bootstrap/v3.4.1/js/bootstrap.min.js"></script>
-<script src="./static/layui/v2.7.6/layui.js"></script>
+<!-- <script src="./static/layui/v2.7.6/layui.js"></script> -->
 <script src="./static/xing.js"></script>
 <script>
     $(document).ready(()=>{
-        $("#loginF").modal("show")
+        const isonline = window.localStorage.getItem("wtimgs_isonline");
+        if (isonline != "online") {
+            $("#loginF").modal("show");
+        }
     })
     
     function login() {
@@ -61,12 +63,13 @@
             }
         ).done((res)=>{
             if (res["data"] == "successful") {
-            $("#errmes").css("display", "none");
-            $("#loginF").modal("hide");
-        }
-        else {
-            $("#errmes").css("display", "block");
-        }
+                $("#errmes").css("display", "none");
+                $("#loginF").modal("hide");
+                window.localStorage.setItem("wtimgs_isonline", "online");
+            }
+            else {
+                $("#errmes").css("display", "block");
+            }
         })
     }
 
@@ -76,8 +79,8 @@
       }
     });
 
-    const flow = layui.flow;
-    flow.lazyimg({elem: '#imgs img'});
+    // const flow = layui.flow;
+    // flow.lazyimg({elem: '#imgs img'});
 </script>
 
 </html>
