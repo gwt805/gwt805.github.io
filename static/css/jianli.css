@@ -57,6 +57,10 @@ body {
     color: white;
 }
 
+.tittle span a {
+    cursor: url("../imgs/mouse.png"),default;
+}
+
 .jieshao {
     position: absolute;
     color: white;
