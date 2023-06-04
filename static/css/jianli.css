@@ -70,6 +70,7 @@ body {
 }
 
 .jieshao {
+    position: absolute;
     color: white;
     font-size: 16px;
     margin-top: 50px;
@@ -78,6 +79,7 @@ body {
 
 .jieshao p {
     text-align: center;
+    word-break: break-all;
 }
 
 .jieshao div {
@@ -102,8 +104,9 @@ body {
 }
 
 .jineng {
-    position: relative;
-    top: 50px;
+    position: absolute;
+    width: 100%;
+    top: 350px;
     min-width: 700px;
 }
 
@@ -134,15 +137,15 @@ h2 {
 }
 
 .col-md-12 {
-    position: relative;
+    position: absolute;
     width: 100%;
-    top: 50px;
+    top: 550px;
     min-width: 700px;
 }
 
 .prodemo {
-    position: relative;
-    top: 80px;
+    position: absolute;
+    top: 1200px;
 }
 .prodemo img{
     width: 100%;

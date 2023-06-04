@@ -1,7 +1,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var opt = {
-    particleAmount: 100,     //粒子个数
+    particleAmount: 50,     //粒子个数
     defaultSpeed: 1,        //粒子运动速度
     variantSpeed: 1,        //粒子运动速度的变量
     particleColor: "rgb(32,245,245)",       //粒子的颜色
