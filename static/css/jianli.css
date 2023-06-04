@@ -146,6 +146,8 @@ h2 {
 .prodemo {
     position: absolute;
     top: 1200px;
+    width: 100%;
+    min-width: 700px;
 }
 .prodemo img{
     width: 100%;
