@@ -4,11 +4,7 @@
             <el-header class="top">
                 <div class="main">
                     <img src="/src/assets/img/logo.png" alt="Logo" srcset="" draggable="false" @click="$router.push('/')">
-                    <div class="divr">
-                        <div>
-                            <el-text class="mx-1 timeclock" type="info">{{ datetime }}</el-text>
-                        </div>
-                    </div>
+                    <el-text class="mx-1 timeclock" type="info">{{ datetime }}</el-text>
                 </div>
             </el-header>
             <el-main class="middle" id="middle">
@@ -99,23 +95,20 @@ setInterval(getDateTime, 1000);
             left: 0;
             top: 50px;
         }
-    }
-}
 
-.main {
-    font-family: var(--fontFamily);
-    .divr {
-        float: right;
-        width: 380px;
-        display: flex;
-        flex-flow: row;
-        .timeclock {
-            margin-left: 10px;
-            line-height: 50px;
-            font-size: 20px;
+        .main {
+            font-family: var(--fontFamily);
+
+            .timeclock {
+                float: right;
+                line-height: 50px;
+                font-size: 20px;
+            }
         }
     }
 }
+
+
 
 .hline {
     font-size: 20px;
@@ -123,6 +116,7 @@ setInterval(getDateTime, 1000);
     font-family: var(--fontFamily);
     filter: opacity(0.7);
 }
+
 .col {
     margin-bottom: 20px;
 }
