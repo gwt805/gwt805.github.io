@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Changyan: typeof import('./src/components/navbar/changyan.vue')['default']
     Components: typeof import('./src/components/index.vue')['default']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCol: typeof import('element-plus/es')['ElCol']
