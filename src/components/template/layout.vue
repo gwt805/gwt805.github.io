@@ -1,5 +1,5 @@
 <template>
-    <el-divider><span class='hline'><el-icon><star-filled /></el-icon><slot name="hline"></slot></span></el-divider>
+    <el-divider class="zline"><span class='hline'><el-icon><star-filled /></el-icon><slot name="hline"></slot></span></el-divider>
     <el-row class="row" :gutter="12">
         <slot name="layout"></slot>
     </el-row>
@@ -15,6 +15,9 @@ import { StarFilled } from "@element-plus/icons-vue";
     color: rgba(255, 255, 255);
     font-family: var(--fontFamily);
     filter: opacity(0.7);
+}
+.zline:first-child {
+  margin-top: -10px;
 }
 .row {
   margin-bottom: 20px;

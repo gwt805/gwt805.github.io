@@ -90,7 +90,6 @@ setInterval(getDateTime, 1000);
             height: 50px;
             top: 0;
             left: 0;
-            // border: 1px solid yellow;
         }
 
         .middle {
@@ -99,15 +98,6 @@ setInterval(getDateTime, 1000);
             height: calc(100% - 50px);
             left: 0;
             top: 50px;
-            // border: 1px solid red;
-        }
-
-        .footer {
-            width: 100%;
-            height: 500px;
-            position: fixed;
-            left: 0;
-            bottom: 0;
         }
     }
 }
@@ -119,13 +109,6 @@ setInterval(getDateTime, 1000);
         width: 380px;
         display: flex;
         flex-flow: row;
-
-        .theme {
-            width: 100%;
-            height: 100%;
-            vertical-align: middle;
-        }
-
         .timeclock {
             margin-left: 10px;
             line-height: 50px;
