@@ -1,25 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import index from "@/components/index.vue";
-import middle from "@/components/navbar/middle.vue";
-import changyan from "@/components/navbar/changyan.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
         name: "Home",
-        component: index,
-        children: [
-            {
-                path: "",
-                name: "Index",
-                component: middle,
-            },
-            {
-                path: "liuyan",
-                name: "Changyan",
-                component: changyan,
-            }
-        ]
+        component: index
     }
 ];
 

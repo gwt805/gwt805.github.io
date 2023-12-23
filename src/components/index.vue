@@ -1,18 +1,84 @@
 <template>
     <div class="common-layout">
         <el-container class="main">
-            <el-header class="top"><top /></el-header>
-            <el-main class="middle"><router-view></router-view></el-main>
-            <el-footer class="footer"><bottom /></el-footer>
+            <el-header class="top">
+                <div class="main">
+                    <img src="/src/assets/img/logo.png" alt="Logo" srcset="" draggable="false" @click="$router.push('/')">
+                    <div class="divr">
+                        <div>
+                            <el-text class="mx-1 timeclock" type="info">{{ datetime }}</el-text>
+                        </div>
+                    </div>
+                </div>
+            </el-header>
+            <el-main class="middle" id="middle">
+                <layout v-for="item in data">
+                    <template #hline> {{ item?.name }}</template>
+                    <template #layout v-for="dt in item">
+                        <el-col class="col" :span="4" v-for="id in dt" @click="npage(id.link)">
+                            <el-card class="card pt" shadow="hover">
+                                <img :src=id.imgUrl alt="Logo" draggable="false">
+                                <a :href=id.link target="_blank" class="aname" draggable="false">{{ id.name }}</a>
+                            </el-card>
+                        </el-col>
+                    </template>
+                </layout>
+                <el-divider><span class='hline'><el-icon><star-filled /></el-icon> 留言板</span></el-divider>
+                <div id="SOHUCS" sid="焘焘导航网"></div>
+            </el-main>
         </el-container>
     </div>
 </template>
 
 <script setup lang="ts">
-import top from "@/components/navbar/top.vue";
-// import middle from "@/components/navbar/middle.vue";
-import bottom from "@/components/navbar/bottom.vue";
 import "@/assets/js/canvas.js";
+import $ from "jquery";
+import { ref, onMounted } from "vue";
+import { getData } from "@/api/data";
+import { StarFilled } from "@element-plus/icons-vue";
+import layout from "@/components/template/layout.vue";
+
+const data: any = ref([]);
+const windows = window as any;
+windows.changyan = undefined;
+windows.cyan = undefined;
+
+$.getScript('https://changyan.sohu.com/upload/changyan.js', () => {
+    windows.changyan.api.config({ appid: 'cyx3JaAA8', conf: '96b5d6c7cc856f0782bdbc5c68e214e4' })
+});
+
+onMounted(() => {
+    getData().then((res: any) => {
+        data.value = res;
+    });
+});
+
+const npage = (url: string) => { window.open(url); };
+
+const datetime = ref("");
+const timeReplace = (num: number) => {
+    if (num < 10) { return "0" + num; }
+    else { return num; }
+};
+
+const getDateTime = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+    const day = now.getDay();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const second = now.getSeconds();
+
+    const week = ["日", "一", "二", "三", "四", "五", "六"];
+    const weekday = week[day];
+    const weekday_month_year_date_time = `${year} 年 ${timeReplace(month)} 月 ${timeReplace(date)} 日 (${weekday}) ${timeReplace(hour)}:${timeReplace(minute)}:${timeReplace(second)}`;
+
+    datetime.value = weekday_month_year_date_time;
+};
+
+setInterval(getDateTime, 1000);
 </script>
 
 <style scoped lang="less">
@@ -24,21 +90,57 @@ import "@/assets/js/canvas.js";
             height: 50px;
             top: 0;
             left: 0;
+            // border: 1px solid yellow;
         }
+
         .middle {
-            position: fixed;
+            position: absolute;
             width: 100%;
-            height: calc(100% - 100px);
+            height: calc(100% - 50px);
             left: 0;
             top: 50px;
+            // border: 1px solid red;
         }
+
         .footer {
             width: 100%;
-            height: 50px;
+            height: 500px;
             position: fixed;
             left: 0;
             bottom: 0;
         }
     }
+}
+
+.main {
+    font-family: var(--fontFamily);
+    .divr {
+        float: right;
+        width: 380px;
+        display: flex;
+        flex-flow: row;
+
+        .theme {
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .timeclock {
+            margin-left: 10px;
+            line-height: 50px;
+            font-size: 20px;
+        }
+    }
+}
+
+.hline {
+    font-size: 20px;
+    color: rgba(255, 255, 255);
+    font-family: var(--fontFamily);
+    filter: opacity(0.7);
+}
+.col {
+    margin-bottom: 20px;
 }
 </style>
