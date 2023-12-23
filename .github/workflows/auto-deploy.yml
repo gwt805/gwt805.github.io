@@ -28,4 +28,4 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run build
-    - run: node server.js
+    - run: nohup node server.js > /dev/null 2>&1 &
