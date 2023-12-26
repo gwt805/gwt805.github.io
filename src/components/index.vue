@@ -12,7 +12,7 @@
                     <template #hline> {{ item?.name }}</template>
                     <template #layout v-for="dt in item">
                         <el-col class="col" :span="4" v-for="id in dt" @click="npage(id.link)">
-                            <el-tooltip :content=id.name>
+                            <el-tooltip :content=id.name hide-after="0">
                                 <el-card class="card pt" shadow="hover">
                                     <img :src=id.imgUrl alt="Logo" draggable="false">
                                     <p class="aname" draggable="false">{{ id.name }}</p>
