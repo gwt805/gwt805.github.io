@@ -31,15 +31,9 @@ import { StarFilled } from "@element-plus/icons-vue";
   filter: opacity(0.8);
   opacity: 0.8;
   backdrop-filter: blur(10px);
-  overflow-wrap:normal;
 }
-.row .col .pt:hover {
+.row .col .card:hover {
   border: 1px solid #409eff;
-  box-shadow:
-     3px 3px 3px #409eff,
-     3px -3px 3px #409eff,
-     -3px 3px 3px #409eff,
-     -3px -3px 3px #409eff;
 }
 .row .col .card img {
   width: 37px;
@@ -47,21 +41,10 @@ import { StarFilled } from "@element-plus/icons-vue";
   margin: -8px 10px 0 0;
   border-radius: 50%;
 }
-.row .col .card a {
-  text-decoration: none;
-  color: inherit;
+.row .col .card p {
   display: inline-block;
+  width: calc(100% - 50px);
+  overflow: hidden;
   white-space: nowrap;
-}
-.row .col .card:hover a {
-    animation: move 2s infinite alternate linear;
-}
-@keyframes move {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(calc(-100% + 150px), 0);
-    }
 }
 </style>

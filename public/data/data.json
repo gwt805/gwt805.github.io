@@ -101,6 +101,11 @@
                 "name": "Evue",
                 "link": "https://github.com/scriptiot/evue/blob/master/README-zh.md",
                 "imgUrl": "https://img0.baidu.com/it/u=1333368120,1655314893&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+            },
+            {
+                "name": "PythonAnyWhere",
+                "link": "https://www.pythonanywhere.com/",
+                "imgUrl": "https://img0.baidu.com/it/u=1333368120,1655314893&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
             }
         ]
     },
@@ -173,7 +178,7 @@
                 "imgUrl": "https://img1.baidu.com/it/u=2771039751,824041010&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
             },
             {
-                "name": "web-update-notification",
+                "name": "web-plugin-update-notification",
                 "link": "https://github.com/GreatAuk/plugin-web-update-notification",
                 "imgUrl": "https://img1.baidu.com/it/u=2771039751,824041010&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
             }

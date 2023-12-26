@@ -12,10 +12,12 @@
                     <template #hline> {{ item?.name }}</template>
                     <template #layout v-for="dt in item">
                         <el-col class="col" :span="4" v-for="id in dt" @click="npage(id.link)">
-                            <el-card class="card pt" shadow="hover">
-                                <img :src=id.imgUrl alt="Logo" draggable="false">
-                                <a :href=id.link target="_blank" class="aname" draggable="false">{{ id.name }}</a>
-                            </el-card>
+                            <el-tooltip :content=id.name>
+                                <el-card class="card pt" shadow="hover">
+                                    <img :src=id.imgUrl alt="Logo" draggable="false">
+                                    <p class="aname" draggable="false">{{ id.name }}</p>
+                                </el-card>
+                            </el-tooltip>
                         </el-col>
                     </template>
                 </layout>
@@ -27,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import "@/assets/js/canvas.js";
 import $ from "jquery";
 import { ref, onMounted } from "vue";
 import { getData } from "@/api/data";
@@ -108,8 +109,6 @@ setInterval(getDateTime, 1000);
     }
 }
 
-
-
 .hline {
     font-size: 20px;
     color: rgba(255, 255, 255);
@@ -120,4 +119,4 @@ setInterval(getDateTime, 1000);
 .col {
     margin-bottom: 20px;
 }
-</style>
+</style>public/canvas.js
