@@ -37,6 +37,7 @@ import { StarFilled } from "@element-plus/icons-vue";
 }
 .row .col .card img {
   width: 37px;
+  height: 37px;
   float:inline-start;
   margin: -8px 10px 0 0;
   border-radius: 50%;
