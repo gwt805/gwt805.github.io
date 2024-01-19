@@ -32,6 +32,7 @@
 import $ from "jquery";
 import { ref, onMounted } from "vue";
 import { getData } from "@/api/data";
+import { ElLoading } from "element-plus";
 import { StarFilled } from "@element-plus/icons-vue";
 import layout from "@/components/template/layout.vue";
 
@@ -45,7 +46,9 @@ $.getScript('https://changyan.sohu.com/upload/changyan.js', () => {
 });
 
 onMounted(() => {
+    const loadingService = ElLoading.service({fullscreen: true, text: "首次加载数据较慢 请您耐心等待 ~"});
     getData().then((res: any) => {
+        loadingService.close();
         data.value = res;
     });
 });
