@@ -173,19 +173,19 @@
                 "imgUrl": "https://book.flutterchina.club/assets/img/logo.png"
             },
             {
-                "name": "PrimeVue",
-                "link": "https://primevue.org/",
-                "imgUrl": "https://img1.baidu.com/it/u=3875084872,415645148&fm=253&fmt=auto&app=138&f=JPEG?w=380&h=380"
-            },
-            {
                 "name": "NW.js",
                 "link": "http://nwjs.org.cn/",
-                "imgUrl": "http://nwjs.org.cn/asset/img/favicon.ico"
+                "imgUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAAB3RJTUUH6AETERkMxl3O+gAABUlJREFUWMPFl1tsFGUUx//fXHamt23ZbUtKCwXWtpSWloYmFTRYtFQQH6AJxqRYaGJCIkJi0PigIeCDIok8gQ9qNEAkIUaDcjGESLChQKKU3oTe0TahdGm3u+12d2Znvu/4sGhYLu1WsjjJvMyc739+5/y/OfkG+J8v9rgXmqckDdxOB2MRKKrP7O2wZyuuLV7qhOBOMCkkOXR/uPu6mBFAX7JCYcTrJD1lh5yaMV9YZphPjp8lbu83etrG4k2uF1XUyEmpH8opznxhhHw8NHGYAUdDN6/FFCI/uFBxz92s5Sz6PKvu7WLX2vo5qeUvZInQxLMR75BbcWVfsMdGrBkr95TmqunuI1mbdlS51zdmJBdW5BiD3c/Zfu8l2+cdisn3QMtSZD1lu3t9o9tZuRZEBAdjUOp2SnZgrD7U23IRwLcz10/len5xoXPFS2BaEtSsXKT2tGRG7tyqBtB8f6QUs05wp5TsnKflekAggARIcCiuuXCt25qkZGR/oHlKCmZKzyQpX3XnaExRARG1Xc3OA1McHkfuYuXxAEQqkxWdKQ6A7gcTSC+uREZlTTFz6O/rBcuSZ0CQwWKlGZOizx/YdtLDa8HAGO4nEAS8Mk/DrsY3kLaw+HUibJjZhvguKZ4gxoCuCY7SBTlY9OrWFDk9c4/uKfE8RQCGnqDAgW4DJZUrkVdVU0qq/l5SYVlS4gGIwIMBkOCYtAgb5+vYvq0BKflF9ULQ+sQCMAZhTMF74jOEun6DBQnHByOoXZKLNa9tS5Wc7j2ap3RRQjtAQiDiHcTY2a/B/V50BYGfhy3s3LAa+VUvlkF17NYLyvSEAQAEJiuTxp832wNNPwiyLZy8bYNkFdsatrLkBUUNRKI2gQAAmGQKy/zEf+V0d7i3BZOc4asBE+uWzkdVXUOa5HTv1Tyl+YkDADEI3mX7Rw/4zh0Jk9+LG0HgUJ8Ju2gVnMurl0uq4x29sExLEEB0fJEQJ0IDnWcDzSchbAtXxzi8XIG7dgvT8goaIURNogAAAGZ/Z5gs8yN/86lb4b4WyJIERgQ1cx5ctVucstO9V/eU5AIQ8WrOCgAAmKJ2WP7Rg75zx0we8EbHJAGpy55HWvnqFUx17AIQ91cxa4DwzRYC0dFQf8f5ics/AdwCQGCqBlftFqblFrwJUDUYi6sLswYAAKO3fUJEjH3+5lNDZt/1e10QULPy4Fpb75KSUl+G4HI8Wv8JAADApGsR391DY+ePW+J+K8pXI61ijYM5dDbNkfPJAYyeNiISX071tV2cvHoGsCOIWuFA1sa3MKd6cxQqYR0AYPa2jwvT2DfefHo4MtAaLZgIctocKBlZcWk8EQAAkMSumGN3vhj75QQn/z9WUPR+GgBmd5sgLg4He1qbJ38/B1gm4vH+0QAxnsUvYva13xVGaJ/v0mlv5FYrHjmHSCB6zJvmTEhgBMEFuHUvjgGCA4ILgE3bUwKaIqO3v/Fd+E7Q+O3YIgig8CRAIkgiIh4LwCQpJIzQOB8ZALMMMNuE8A6AB/1BSFJg2i70ttvE+cHJrpZfA5dOAoFhMG6CcQsIjsL46wYJy2y1hgdjAGKGhZSRaTCihSI4vsqha4yPDsLX9CPCQ/3HSPDvuc/Lp4OwfSNTckZmh3lncCWmAnMVcIjxYUz9cQX+603dPBTcz33emN+7h4xOKqpwQZbfVVKcm8AY41MTZ4RtfWp0t3rj3RN6YXmJpGq75ZS0VUySFB4OdXMj9LGkapdDnVdpWgAA0ArKHOB2NggMkjRi9ndG4k3+r8Yzy3QInklECmPMZw7cmHhU3N81bVzNZ78HJAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0wMS0xOVQxNzoyNToxMiswODowMB26HMQAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMDEtMTlUMTc6MjU6MTIrMDg6MDBs56R4AAAAAElFTkSuQmCC"
             },
             {
                 "name": "阿里巴巴矢量图标库",
                 "link": "https://www.iconfont.cn/",
                 "imgUrl": "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg"
+            },
+            {
+                "name": "PrimeVue",
+                "link": "https://primevue.org/",
+                "imgUrl": "https://img1.baidu.com/it/u=3875084872,415645148&fm=253&fmt=auto&app=138&f=JPEG?w=380&h=380"
             },
             {
                 "name": "Ant Design",
@@ -210,7 +210,7 @@
             {
                 "name": "Layui - Vue",
                 "link": "http://www.layui-vue.com/zh-CN/index",
-                "imgUrl": "http://www.layui-vue.com/favicon.ico"
+                "imgUrl": "http://www.layui-vue.com/assets/logo.685dda16.jpg"
             },
             {
                 "name": "dom-to-image",
