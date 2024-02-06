@@ -83,9 +83,12 @@ setInterval(getDateTime, 1000);
 setInterval(() => {
     const phone_input:any = document.getElementsByClassName("phone-input");
     const password_input:any = document.getElementsByClassName("password-input");
+    const identifying_input:any = document.getElementsByClassName("identifying-input");
 
     if (phone_input.length != 0) { phone_input[0].style.backgroundColor = "white"; }
     if (password_input.length != 0) { password_input[0].style.backgroundColor = "white"; }
+    if (password_input.length == 2) { password_input[1].style.backgroundColor = "white";}
+    if (identifying_input.length != 0) { identifying_input[0].style.backgroundColor = "white"; }
 });
 </script>
 
