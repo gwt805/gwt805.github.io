@@ -79,6 +79,14 @@ const getDateTime = () => {
 };
 
 setInterval(getDateTime, 1000);
+
+setInterval(() => {
+    const phone_input:any = document.getElementsByClassName("phone-input");
+    const password_input:any = document.getElementsByClassName("password-input");
+
+    if (phone_input.length != 0) { phone_input[0].style.backgroundColor = "white"; }
+    if (password_input.length != 0) { password_input[0].style.backgroundColor = "white"; }
+});
 </script>
 
 <style scoped lang="less">
@@ -111,7 +119,6 @@ setInterval(getDateTime, 1000);
         }
     }
 }
-
 .hline {
     font-size: 20px;
     color: rgba(255, 255, 255);

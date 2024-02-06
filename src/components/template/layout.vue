@@ -1,20 +1,16 @@
 <template>
-    <el-divider class="zline"><span class='hline'><el-icon><star-filled /></el-icon><slot name="hline"></slot></span></el-divider>
+    <el-divider class="zline"><span class='hline'><slot name="hline"></slot></span></el-divider>
     <el-row class="row" :gutter="12">
         <slot name="layout"></slot>
     </el-row>
 </template>
 
-<script setup lang="ts">
-import { StarFilled } from "@element-plus/icons-vue";
-</script>
+<script setup lang="ts"></script>
 
 <style>
 .hline {
     font-size: 20px;
-    color: rgba(255, 255, 255);
     font-family: var(--fontFamily);
-    filter: opacity(0.7);
 }
 .zline:first-child {
   margin-top: -10px;
@@ -28,7 +24,6 @@ import { StarFilled } from "@element-plus/icons-vue";
 }
 .row .col .card {
   background-color: rgba(255, 255, 255, 0.2);
-  filter: opacity(0.8);
   opacity: 0.8;
   backdrop-filter: blur(10px);
 }
