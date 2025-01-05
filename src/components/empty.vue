@@ -3,7 +3,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
 onMounted(() => { document.getElementsByTagName("html")[0].classList.add("dark")} )
-onUnmounted(() => { document.getElementsByTagName("html")[0].classList.remove("dark") })
+onUnmounted(() => {
+    document.getElementsByTagName("html")[0].classList.remove("dark");
+    window.history.pushState(null, "", window.location.href =  "/index");
+})
 </script>
 
 <style scoped lang="less">.el-empty{user-select: none;}</style>

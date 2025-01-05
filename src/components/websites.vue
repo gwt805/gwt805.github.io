@@ -51,7 +51,7 @@ const npage = (url: string) => { window.open(url) };
 
 onMounted(() => {
     document.getElementsByTagName("html")[0].classList.add("dark");
-    const loadingService = ElLoading.service({fullscreen: true, text: "正在加载数据 ~"});
+    const loadingService = ElLoading.service({fullscreen: true, text: "正在加载资源 ~"});
     getdata().then((res: any) => { data.value = res; loadingService.close(); });
     if (decodeURIComponent(route.fullPath).indexOf("#")!= -1) {
         default_active.value = '#' + decodeURIComponent(route.fullPath).split("#")[1];
@@ -72,7 +72,10 @@ onMounted(() => {
         }
     })
 })
-onUnmounted(() => { document.getElementsByTagName("html")[0].classList.remove("dark") })
+onUnmounted(() => {
+    document.getElementsByTagName("html")[0].classList.remove("dark");
+    window.history.pushState(null, "", window.location.href =  "/index");
+})
 </script>
 
 <style scoped lang="less">

@@ -20,15 +20,19 @@
 </template>
 
 <script setup lang="ts">
-// import "@/assets/bl.js"
-import comment from "@/components/comment.vue";
+import "@/assets/bl.js"
 import http from "@/utils/axios/index";
-import { ref, onMounted, onUnmounted, provide, onBeforeUnmount, onBeforeMount } from "vue";
+import { ElLoading } from "element-plus";
+import comment from "@/components/comment.vue";
+import { ref, onMounted, onUnmounted, provide, onBeforeUnmount } from "vue";
+
 const yiyan = ref("");
 const displayedText = ref("");
 const typingInterval = ref();
 const changyan_model = ref(false);
 provide("changyan_model", changyan_model)
+const loadingService = ElLoading.service({fullscreen: true, text: "正在加载资源 ~"});
+
 const getYiyan = () => {
     http.get("https://v1.hitokoto.cn/").then((res: any) => {
         yiyan.value = res.hitokoto;
@@ -38,6 +42,7 @@ const getYiyan = () => {
         startTyping();
     });
 };
+
 const startTyping = () => {
     let index = 0;
     displayedText.value = "";
@@ -54,18 +59,14 @@ const startTyping = () => {
         }
     }, 150);
 };
-onBeforeMount(()=>{
-    const script = document.createElement('script');
-    script.src = '/bl.js';
-    document.body.appendChild(script);
-})
-onMounted(() => {
-    getYiyan();
-    
+document.addEventListener('readystatechange', function () {
+    if (document.readyState === 'complete') {
+        loadingService.close();
+    }
 });
+onMounted(() => { getYiyan();});
 onBeforeUnmount(()=> {
     const tmp = document.getElementsByClassName("vh-bolang");
-    
     const cron = setInterval(()=> {
         if (tmp) {
             for (let i = 0; i < tmp.length; i++) {
@@ -159,5 +160,45 @@ onUnmounted(() => {
             margin-left: 10px;
         }
     }
+}
+@-webkit-keyframes opac{
+    from {
+        opacity: 1;
+        width:0;
+        height:0;
+        top:50%;
+        left:50%;
+    }
+    to {
+        opacity : 0;
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+    }
+}
+.animate .w2{
+    -webkit-animation-delay:1s;
+}
+.animate .w3{
+    -webkit-animation-delay:2s;
+}
+.animate .w4{
+    -webkit-animation-delay:3s;
+}
+.wave{
+    width: 22.7rem;
+    height: 22.7rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.wave *{
+    border:1px solid #fff;
+    position:absolute;
+    border-radius:50%;
+    -webkit-animation:opac 4s infinite;
 }
 </style>

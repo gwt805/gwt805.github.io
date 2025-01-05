@@ -17,16 +17,25 @@
 </template>
 
 <script setup lang="ts">
-import http from '@/utils/axios'
-import { ref, onMounted, onUnmounted } from 'vue'
+import http from '@/utils/axios';
+import { ElLoading } from "element-plus";
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const card_data: any = ref([])
+
 onMounted(() => {
-    http.get("https://api.vvhan.com/api/hotlist/all").then((res: any) => { card_data.value = res.data; })
+    const loadingService = ElLoading.service({fullscreen: true, text: "正在加载资源 ~"});
+    http.get("https://api.vvhan.com/api/hotlist/all").then((res: any) => {
+        card_data.value = res.data;
+        loadingService.close();
+    }).catch(() => {
+        loadingService.close();
+    })
     document.getElementsByTagName("html")[0].classList.add("dark");
 })
 onUnmounted(() => {
     document.getElementsByTagName("html")[0].classList.remove("dark");
+    window.history.pushState(null, "", window.location.href =  "/index");
 })
 </script>
 
