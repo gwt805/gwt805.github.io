@@ -3,8 +3,8 @@
         <div class="nav">
             <div class="logo"><img src="/logo.png" draggable="false"></div>
             <div class="nav-list">
-                <a class="nav-item" onclick="window.location.href='/websites'">导航网</a>
-                <a class="nav-item" onclick="window.location.href='/hotnet'">热搜榜</a>
+                <a class="nav-item" @click="$router.push('/websites')">导航网</a>
+                <a class="nav-item" @click="$router.push('/hotnet')">热搜榜</a>
                 <a class="nav-item" @click="changyan_model=true">留言板</a>
             </div>
             <comment />
@@ -20,10 +20,10 @@
 </template>
 
 <script setup lang="ts">
-import "@/assets/bl.js"
+// import "@/assets/bl.js"
 import comment from "@/components/comment.vue";
 import http from "@/utils/axios/index";
-import { ref, onMounted, onUnmounted, provide } from "vue";
+import { ref, onMounted, onUnmounted, provide, onBeforeUnmount, onBeforeMount } from "vue";
 const yiyan = ref("");
 const displayedText = ref("");
 const typingInterval = ref();
@@ -54,9 +54,27 @@ const startTyping = () => {
         }
     }, 150);
 };
+onBeforeMount(()=>{
+    const script = document.createElement('script');
+    script.src = '/bl.js';
+    document.body.appendChild(script);
+})
 onMounted(() => {
     getYiyan();
+    
 });
+onBeforeUnmount(()=> {
+    const tmp = document.getElementsByClassName("vh-bolang");
+    
+    const cron = setInterval(()=> {
+        if (tmp) {
+            for (let i = 0; i < tmp.length; i++) {
+                tmp[i].remove();
+            }
+            clearInterval(cron)
+        }
+    }, 1)
+})
 onUnmounted(() => {
     clearInterval(typingInterval.value);
 });
