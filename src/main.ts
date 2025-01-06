@@ -1,7 +1,6 @@
 import "./style.css";
 import App from "./App.vue";
 import { createApp } from "vue";
-import router from "@/utils/routes";
 import "element-plus/dist/index.css";
 import ElementPlus from "element-plus";
 import disableDevtool from'disable-devtool';
@@ -17,5 +16,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 app.use(ElementPlus);
-app.use(router);
 app.mount("#app");
