@@ -16,5 +16,5 @@
 
   window.__checkUpdateSetup__({"versionType":"build_timestamp","logVersion":true,"locale":"zh_CN","notificationProps":{"title":"📢 系统更新","description":"系统更新啦, 请刷新页面","buttonText":"刷新","dismissButtonText":"忽略"},"injectFileBase":"/"});
       ;const logFn = function bt(t,c){console.log(`version: %c${t}`,"color: #1677ff"),console.log(`release time: %c${new Date(c).toLocaleString()}`,"color: #1677ff")}
-      ;logFn('1736097824715', 1736097824746)
+      ;logFn('1736126989151', 1736126989175)
     

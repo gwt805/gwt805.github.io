@@ -22,7 +22,6 @@
 <script setup lang="ts">
 import "@/assets/bl.js"
 import http from "@/utils/axios/index";
-import { ElLoading } from "element-plus";
 import comment from "@/components/comment.vue";
 import { ref, onMounted, onUnmounted, provide, onBeforeUnmount } from "vue";
 
@@ -31,7 +30,6 @@ const displayedText = ref("");
 const typingInterval = ref();
 const changyan_model = ref(false);
 provide("changyan_model", changyan_model)
-const loadingService = ElLoading.service({fullscreen: true, text: "正在加载资源 ~"});
 
 const getYiyan = () => {
     http.get("https://v1.hitokoto.cn/").then((res: any) => {
@@ -59,11 +57,7 @@ const startTyping = () => {
         }
     }, 150);
 };
-document.addEventListener('readystatechange', function () {
-    if (document.readyState === 'complete') {
-        loadingService.close();
-    }
-});
+
 onMounted(() => { getYiyan();});
 onBeforeUnmount(()=> {
     const tmp = document.getElementsByClassName("vh-bolang");
