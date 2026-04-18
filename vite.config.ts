@@ -1,11 +1,17 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import Components from 'unplugin-vue-components/vite'
+import { AntdvNextResolver } from '@antdv-next/auto-import-resolver'
 import { webUpdateNotice } from '@plugin-web-update-notification/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(),
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [AntdvNextResolver()],
+    }),
     webUpdateNotice({
       versionType: "build_timestamp",
       logVersion: true,

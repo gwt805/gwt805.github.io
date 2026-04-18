@@ -1,17 +1,19 @@
 <template>
     <div class="container">
-        <div class="nav">
-            <div class="logo"><img src="/logo.png" draggable="false"></div>
-            <div class="nav-list">
-                <a class="nav-item" onclick="window.location.href='https://gwt805.github.io/websites'">导航网</a>
-                <a class="nav-item" onclick="window.location.href='https://gwt805.github.io/hotnet'">热搜榜</a>
-                <a class="nav-item" @click="changyan_model=true">留言板</a>
+        <div class="header">
+            <a-menu class="menu" mode="horizontal" :selected-keys="['/']" :overflowedIndicator="vnode"
+                :items="[{ 'label': '首页', key: '/' }, { 'label': '导航网', key: '/websites/' }, { 'label': '热搜榜', key: '/hotnet/' }]"
+                @click="onClick" />
+            <div class="datetime">
+                <p class="time">{{ time }}</p>
+                <p class="date">{{ date }}</p>
             </div>
-            <comment />
         </div>
         <div class="yiyan">{{ displayedText }}</div>
+        <div class="z"></div>
         <div class="footer">
             <el-tooltip content="Github" :hide-after="0"><span><a onclick="window.open('https://github.com/gwt805')" target="_blank"><img src="./assets/github.svg"></a></span></el-tooltip>
+            <el-tooltip content="GitCode" :hide-after="0"><span><a onclick="window.open('https://gitcode.com/gwt805')" target="_blank"><img src="./assets/gitcode.svg"></a></span></el-tooltip>
             <el-tooltip content="Gitee" :hide-after="0"><span><a onclick="window.open('https://gitee.com/gwt805')" target="_blank"><img src="./assets/gitee.svg"></a></span></el-tooltip>
             <el-tooltip content="<img src='/gzh.jpg' style='width:100px;' />" raw-content :hide-after="0"><span><img src="./assets/gzh.svg"></span></el-tooltip>
             <span>Copyright © gwt805</span>
@@ -22,14 +24,44 @@
 <script setup lang="ts">
 import "@/assets/bl.js"
 import http from "@/utils/axios/index";
-import comment from "@/components/comment.vue";
-import { ref, onMounted, onUnmounted, provide } from "vue";
+import { MenuOutlined } from "@antdv-next/icons";
+import { h, ref, onMounted, onUnmounted } from "vue";
+
+const cron = ref();
+const date = ref('');
+const time = ref('');
+const lastTime = ref(performance.now());
 
 const yiyan = ref("");
 const displayedText = ref("");
 const typingInterval = ref();
-const changyan_model = ref(false);
-provide("changyan_model", changyan_model)
+
+const vnode = h(MenuOutlined, { class: 'hover-icon' });
+
+const onClick = (data: any) => {
+    if (data.key !== "/") {
+        window.location.href = `https://gwt805.github.io/${data.key}`;
+    }
+}
+
+const getCurrentDateTime = () => {
+    const now_date = new Date();
+    const year = now_date.getFullYear();
+    const month = String(now_date.getMonth() + 1).padStart(2, '0'); // 月份是从0开始的
+    const day = String(now_date.getDate()).padStart(2, '0');
+    const hours = String(now_date.getHours()).padStart(2, '0');
+    const minutes = String(now_date.getMinutes()).padStart(2, '0');
+    const seconds = String(now_date.getSeconds()).padStart(2, '0');
+    const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+    const weekday = weekdays[now_date.getDay()]; // 获取星期几，注意星期天是0，星期一是1，依此类推
+    date.value = `${year}年${month}月${day}日 星期${weekday}`;
+    time.value = `${hours}:${minutes}:${seconds}`;
+    const now_timestamp = performance.now();
+    const dt = now_timestamp - lastTime.value;
+    if (dt > 1000) {
+        lastTime.value = now_timestamp;
+    }
+}
 
 const getYiyan = () => {
     http.get("https://v1.hitokoto.cn/").then((res: any) => {
@@ -71,6 +103,7 @@ const handleResize = () => {
 };
 
 onMounted(() => {
+    cron.value = setInterval(getCurrentDateTime);
     getYiyan();
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -78,52 +111,75 @@ onMounted(() => {
 </script>
 <style scoped lang="less">
 .container {
-    width: 100vw;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
     user-select: none;
-    background-image: url("https://img.8845.top/acg/loli2.php"); //https://img.8845.top/good
+    background-image: url("./assets/background.jpg"); //https://img.8845.top/good
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
-    .nav {
-        width: 100%;
-        height: 40px;
-        background-color: rgba(0, 0, 0, 0.3);
+    .header {
+        height: 50px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: black;
+        // box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 
-        .logo {
-            width: 34px;
-            height: 34px;
+        ::v-deep(.menu) {
+            background-color: transparent;
+            border-bottom: none;
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+            .hover-icon {
+                color: black;
+            }
+
+            .ant-menu-item,
+            .ant-menu-overflow-item {
+                color: black;
+                font-size: 16px;
+
+                &::after,
+                &::before {
+                    border-bottom: none;
+                }
+                &:hover {
+                    color: white;
+                }
+            }
+
+            .ant-menu-item-selected,
+            .ant-menu-submenu-selected {
+                color: white;
+                border-bottom: none;
             }
         }
 
-        .nav-list {
+        .datetime {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            word-break: keep-all;
+            white-space: nowrap;
+            text-align: center;
+            margin-right: 15px;
 
-            .nav-item {
-                margin-left: 20px;
-                color: #fff;
-                cursor: pointer;
+            .time {
+                font-size: 16px;
+                font-weight: bold;
+            }
 
-                &:hover {
-                    color: #8d8d8d;
-                }
+            .date {
+                font-size: 14px;
             }
         }
     }
-
+    .z {
+        width: 100%;
+        height: calc(100dvh - 82px);
+        background-color: rgba(255, 255, 255, 0.2);
+    }
     .yiyan {
         max-width: 80%;
         word-wrap: break-word;
@@ -136,7 +192,7 @@ onMounted(() => {
         line-height: 1.5;
         padding: 20px;
         border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .footer {
@@ -150,50 +206,13 @@ onMounted(() => {
         align-items: center;
         color: #a0a4e5;
         z-index: 2;
-
+        img {
+            vertical-align: middle;
+        }
         span:not(:first-child) {
             margin-left: 10px;
         }
     }
 }
-@-webkit-keyframes opac{
-    from {
-        opacity: 1;
-        width:0;
-        height:0;
-        top:50%;
-        left:50%;
-    }
-    to {
-        opacity : 0;
-        width:100%;
-        height:100%;
-        top:0;
-        left:0;
-    }
-}
-.animate .w2{
-    -webkit-animation-delay:1s;
-}
-.animate .w3{
-    -webkit-animation-delay:2s;
-}
-.animate .w4{
-    -webkit-animation-delay:3s;
-}
-.wave{
-    width: 22.7rem;
-    height: 22.7rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-}
-.wave *{
-    border:1px solid #fff;
-    position:absolute;
-    border-radius:50%;
-    -webkit-animation:opac 4s infinite;
-}
+
 </style>
